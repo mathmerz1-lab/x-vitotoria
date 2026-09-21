@@ -1,0 +1,1217 @@
+/* ==========================================================================
+   X VITÓRIA — style.css
+
+   ÍNDICE
+   1. Variáveis (cores, fontes, tamanhos)  ← mude aqui para ajustar o visual
+   2. Base
+   3. Botões e status
+   4. Cabeçalho e logo
+   5. Hero (topo da página)
+   6. Informações rápidas
+   7. Cardápio
+   8. Cardápio de bebidas
+   9. Localização
+   10. Rodapé
+   11. Barra de pedido fixa (celular)
+   12. Desktop (a partir de 900px)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIÁVEIS
+   A paleta vem dos ingredientes do xis: mostarda, ketchup e maionese.
+   ========================================================================== */
+:root {
+    /* Cores */
+    --chapa: #1c1814;          /* fundo principal (cor de chapa quente) */
+    --carvao: #26201a;         /* fundo de faixas e painéis */
+    --linha: #3a3229;          /* divisórias sutis */
+    --linha-forte: #5a4f42;    /* bordas de botões e pontilhado */
+    --maionese: #fbf1d9;       /* texto principal */
+    --pao: #bfb29c;            /* texto secundário */
+    --mostarda: #ffc21a;       /* destaque principal (preços, botões) */
+    --ketchup: #d62f20;        /* destaque secundário (selo de novidade) */
+    --verde: #4cd07d;          /* só para o "aberto agora" */
+
+    /* Fontes */
+    --fonte-titulo: 'Bricolage Grotesque', 'Arial Narrow', Arial, sans-serif;
+    --fonte-texto: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+    /* Formas */
+    --raio: 12px;
+    --raio-grande: 28px;
+
+    /* Medidas do layout */
+    --header-h: 64px;          /* altura do cabeçalho */
+    --nav-h: 56px;             /* altura da barra de categorias */
+    --logo-tam: 44px;          /* ALTURA DO LOGO no cabeçalho */
+}
+
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Rolagem suave, só para quem não pediu para reduzir animações */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--maionese);
+    background-color: var(--chapa);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-stretch: 85%;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--maionese);
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+address {
+    font-style: normal;
+}
+
+.container {
+    width: min(100% - 2.5rem, 1120px);
+    margin-inline: auto;
+}
+
+/* Foco visível para quem navega pelo teclado */
+:focus-visible {
+    outline: 3px solid var(--mostarda);
+    outline-offset: 3px;
+}
+
+/* Link "pular para o conteúdo" (acessibilidade) */
+.pular {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    border-radius: var(--raio);
+    background: var(--mostarda);
+    color: var(--chapa);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.pular:focus {
+    top: 1rem;
+}
+
+
+/* ==========================================================================
+   3. BOTÕES E STATUS
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: var(--raio);
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primario {
+    background-color: var(--mostarda);
+    color: var(--chapa);
+}
+
+.btn-primario:hover {
+    background-color: #ffd24d;
+}
+
+.btn-contorno {
+    border-color: var(--linha-forte);
+    color: var(--maionese);
+}
+
+.btn-contorno:hover {
+    border-color: var(--mostarda);
+    color: var(--mostarda);
+}
+
+.btn-pequeno {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9375rem;
+}
+
+/* Ícones (definidos no HTML com <use href="#i-...">) */
+.icone {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Indicador "Aberto agora / Fechado" (o texto é preenchido pelo script.js) */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--linha);
+    border-radius: 999px;
+    background-color: var(--carvao);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-ponto {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: var(--pao);
+}
+
+.status[data-aberto="true"] .status-ponto {
+    background-color: var(--verde);
+    box-shadow: 0 0 0 4px rgb(76 208 125 / 0.2);
+}
+
+.status[data-aberto="false"] .status-ponto {
+    background-color: var(--ketchup);
+}
+
+
+/* ==========================================================================
+   4. CABEÇALHO E LOGO
+   ========================================================================== */
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--header-h);
+    background-color: rgb(28 24 20 / 0.92);
+    border-bottom: 1px solid var(--linha);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.topo-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.marca-nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1.375rem;
+    font-weight: 800;
+    font-stretch: 85%;
+    line-height: 1;
+}
+
+/* ---- ESPAÇO DO LOGO ----
+   Enquanto não houver imagem, mostra uma caixa tracejada com a palavra LOGO.
+   Quando você colocar <img> dentro dele, a caixa some e a imagem se ajusta
+   sozinha à altura definida em --logo-tam (no topo deste arquivo). */
+.logo-slot {
+    display: grid;
+    place-items: center;
+    height: var(--logo-tam);
+    min-width: var(--logo-tam);
+    padding-inline: 0.5rem;
+    border: 2px dashed var(--linha-forte);
+    border-radius: var(--raio);
+    color: var(--pao);
+    font-family: var(--fonte-titulo);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.logo-slot:has(img) {
+    padding: 0;
+    border: 0;
+}
+
+.logo-slot img {
+    display: block;
+    height: 80%;
+    width: auto;
+    max-width: 100px;
+    object-fit: contain;
+}
+
+.logo-slot-grande {
+    --logo-tam: 64px;
+}
+
+/* Menu de links (só no desktop) */
+.menu-principal {
+    display: none;
+}
+
+.menu-principal a {
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.menu-principal a:hover {
+    color: var(--mostarda);
+}
+
+.topo-acoes {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* No celular o pedido é feito pela barra fixa de baixo */
+.topo-cta {
+    display: none;
+}
+
+
+/* ==========================================================================
+   5. HERO
+   ========================================================================== */
+.hero {
+    padding-block: 2.5rem 3.5rem;
+}
+
+.hero-grade {
+    display: grid;
+    gap: 2.75rem;
+    align-items: center;
+}
+
+.hero-texto h1 {
+    margin-bottom: 1.25rem;
+    font-size: clamp(2.75rem, 10vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.hero-texto p {
+    max-width: 34rem;
+    margin-bottom: 1.75rem;
+    font-size: 1.125rem;
+    color: var(--pao);
+}
+
+.hero-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* Foto do xis com moldura mostarda deslocada */
+.hero-foto {
+    position: relative;
+    margin: 0;
+}
+
+.hero-foto::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translate(12px, 12px);
+    border: 3px solid var(--mostarda);
+    border-radius: var(--raio-grande);
+}
+
+.hero-foto-moldura {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    border-radius: var(--raio-grande);
+    background-color: var(--carvao);
+}
+
+.hero-foto-moldura img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Se a foto xis.jpg não carregar, mostra um aviso em vez de imagem quebrada */
+.hero-foto-moldura.sem-foto {
+    display: grid;
+    place-items: center;
+    border: 2px dashed var(--linha-forte);
+    color: var(--pao);
+    text-align: center;
+}
+
+.hero-foto-moldura.sem-foto img {
+    display: none;
+}
+
+.hero-foto-moldura.sem-foto::after {
+    content: "Coloque a foto do xis\A (arquivo xis.jpg)";
+    white-space: pre;
+}
+
+/* Selo de novidade sobre a foto */
+.selo {
+    position: absolute;
+    left: -0.5rem;
+    bottom: 1.5rem;
+    z-index: 2;
+    display: block;
+    padding: 0.75rem 1.1rem;
+    border-radius: var(--raio);
+    background-color: var(--ketchup);
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+    transform: rotate(-4deg);
+    transition: transform 0.2s ease;
+}
+
+.selo strong {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-stretch: 85%;
+}
+
+.selo:hover {
+    transform: rotate(-2deg) scale(1.04);
+}
+
+/* Única animação automática do site: entrada do topo da página */
+@media (prefers-reduced-motion: no-preference) {
+    .hero-texto > *,
+    .hero-foto {
+        animation: entrada 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .hero-texto > :nth-child(2) { animation-delay: 0.08s; }
+    .hero-texto > :nth-child(3) { animation-delay: 0.16s; }
+    .hero-foto { animation-delay: 0.2s; }
+}
+
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   6. INFORMAÇÕES RÁPIDAS
+   ========================================================================== */
+.info {
+    border-block: 1px solid var(--linha);
+    background-color: var(--carvao);
+}
+
+.info-grade {
+    display: grid;
+}
+
+.info-item {
+    display: flex;
+    gap: 1rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--linha);
+}
+
+.info-item:last-child {
+    border-bottom: 0;
+}
+
+.info-icone {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--raio);
+    background-color: rgb(255 194 26 / 0.12);
+    color: var(--mostarda);
+}
+
+.info-titulo {
+    margin-bottom: 0.25rem;
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 700;
+    font-stretch: 100%;
+    letter-spacing: 0;
+    color: var(--mostarda);
+}
+
+.info-item p {
+    color: var(--pao);
+}
+
+.info-item a {
+    color: var(--maionese);
+    text-decoration-color: var(--linha-forte);
+    text-underline-offset: 3px;
+}
+
+.info-item a:hover {
+    color: var(--mostarda);
+}
+
+.status-inline {
+    margin-top: 0.6rem;
+    background-color: var(--chapa);
+    color: var(--maionese);
+}
+
+
+/* ==========================================================================
+   7. CARDÁPIO
+   ========================================================================== */
+.menu {
+    position: relative;
+}
+
+/* Barra de categorias: fica presa embaixo do cabeçalho ao rolar */
+.cat-nav {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 40;
+    height: var(--nav-h);
+    background-color: rgb(28 24 20 / 0.94);
+    border-bottom: 1px solid var(--linha);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.cat-nav-interno {
+    max-width: 1160px;
+    height: 100%;
+    margin-inline: auto;
+}
+
+.cat-lista {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+    margin: 0;
+    padding: 0 1.25rem;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.cat-lista::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-lista a {
+    display: block;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--linha-forte);
+    border-radius: 999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.cat-lista a:hover {
+    border-color: var(--mostarda);
+    color: var(--mostarda);
+}
+
+.cat-lista a[aria-current="true"] {
+    border-color: var(--mostarda);
+    background-color: var(--mostarda);
+    color: var(--chapa);
+}
+
+/* Seções e categorias */
+.secao {
+    padding-block: 3.5rem 1rem;
+    scroll-margin-top: calc(var(--header-h) + var(--nav-h));
+}
+
+.secao-cabecalho {
+    display: grid;
+    justify-items: start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.secao-cabecalho h2 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.secao-cabecalho p {
+    max-width: 36rem;
+    color: var(--pao);
+    font-size: 1.0625rem;
+}
+
+.categoria {
+    display: grid;
+    gap: 1.25rem 3rem;
+    padding-block: 2.25rem;
+    border-top: 1px solid var(--linha);
+    scroll-margin-top: calc(var(--header-h) + var(--nav-h));
+}
+
+/* Categoria escondida no modo "abas" do cardápio */
+.categoria[hidden] {
+    display: none;
+}
+
+.categoria h3 {
+    font-size: 1.875rem;
+}
+
+/* Observação que vale para toda a categoria (ex.: o que acompanha os xis) */
+.categoria-nota {
+    max-width: 26rem;
+    margin-top: 0.9rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--mostarda);
+    color: var(--pao);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+/* Lista de itens com pontilhado ligando o nome ao preço */
+.lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-block: 0.65rem;
+}
+
+.item-info {
+    min-width: 0;
+}
+
+.item-nome {
+    font-weight: 600;
+}
+
+.item-desc {
+    display: block;
+    color: var(--pao);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.item-pontos {
+    flex: 1;
+    min-width: 1rem;
+    position: relative;
+    top: -0.3em;
+    border-bottom: 2px dotted var(--linha-forte);
+}
+
+.item-preco {
+    color: var(--mostarda);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   8. CARDÁPIO DE BEBIDAS
+   ========================================================================== */
+.secao-bebidas {
+    margin-top: 3.5rem;
+    padding-block: 3.5rem 1.5rem;
+    border-block: 1px solid var(--linha);
+    background-color: var(--carvao);
+}
+
+.secao-bebidas .categoria {
+    border-top-color: var(--linha-forte);
+}
+
+.aviso-idade {
+    padding-block: 1.5rem 1rem;
+    border-top: 1px solid var(--linha-forte);
+    color: var(--pao);
+    font-size: 0.875rem;
+}
+
+
+/* ==========================================================================
+   9. LOCALIZAÇÃO
+   ========================================================================== */
+.local {
+    padding-block: 4rem;
+    scroll-margin-top: var(--header-h);
+}
+
+.local-grade {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+
+.local-texto {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+}
+
+.local-texto h2 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.local-texto address {
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.local-texto p {
+    color: var(--pao);
+}
+
+.mapa {
+    overflow: hidden;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-grande);
+    background-color: var(--carvao);
+}
+
+.mapa iframe {
+    display: block;
+    width: 100%;
+    height: 320px;
+    border: 0;
+}
+
+
+/* ==========================================================================
+   10. RODAPÉ
+   ========================================================================== */
+.rodape {
+    padding-block: 3rem 6.5rem;
+    border-top: 1px solid var(--linha);
+    background-color: var(--carvao);
+}
+
+.rodape-grade {
+    display: grid;
+    gap: 2rem;
+}
+
+.rodape-marca p {
+    margin-top: 1rem;
+    color: var(--pao);
+}
+
+.rodape-titulo {
+    margin-bottom: 0.6rem;
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 700;
+    font-stretch: 100%;
+    letter-spacing: 0;
+    color: var(--mostarda);
+}
+
+.rodape-grade p + p {
+    margin-top: 0.75rem;
+}
+
+.rodape a {
+    text-decoration-color: var(--linha-forte);
+    text-underline-offset: 3px;
+}
+
+.rodape a:hover {
+    color: var(--mostarda);
+}
+
+.rodape-fim {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--linha);
+    color: var(--pao);
+    font-size: 0.875rem;
+}
+
+
+/* ==========================================================================
+   11. BARRA DE PEDIDO FIXA (só no celular)
+   ========================================================================== */
+.pedido-fixo {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 60;
+    padding: 0.75rem 1.25rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--linha);
+    background-color: rgb(28 24 20 / 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.pedido-fixo .btn {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   12. TELAS MAIORES
+   ========================================================================== */
+@media (min-width: 800px) {
+    .info-grade {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .info-item {
+        padding: 2rem 2rem 2rem 0;
+        border-bottom: 0;
+    }
+
+    .info-item + .info-item {
+        padding-left: 2rem;
+        border-left: 1px solid var(--linha);
+    }
+
+    .categoria {
+        grid-template-columns: minmax(200px, 280px) 1fr;
+    }
+
+    .rodape-grade {
+        grid-template-columns: 1.4fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 900px) {
+    :root {
+        --logo-tam: 48px;
+    }
+
+    .menu-principal {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .topo-cta {
+        display: inline-flex;
+    }
+
+    .pedido-fixo {
+        display: none;
+    }
+
+    .hero {
+        padding-block: 5rem 6.5rem;
+    }
+
+    .hero-grade {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4.5rem;
+    }
+
+    .hero-foto::before {
+        transform: translate(16px, 16px);
+    }
+
+    .hero-foto-moldura {
+        aspect-ratio: 4 / 5;
+    }
+
+    .selo {
+        left: -1.75rem;
+        bottom: 2.5rem;
+    }
+
+    .local-grade {
+        grid-template-columns: 1fr 1.4fr;
+        gap: 4rem;
+    }
+
+    .mapa iframe {
+        height: 400px;
+    }
+
+    .rodape {
+        padding-bottom: 2rem;
+    }
+}
+
+/* Celulares bem pequenos */
+@media (max-width: 380px) {
+    .marca-nome {
+        font-size: 1.125rem;
+    }
+
+    .hero-acoes .btn {
+        width: 100%;
+    }
+}
+/* ==========================================================================
+   PÁGINA DO PEDIDO
+   ========================================================================== */
+
+.pedido-pagina {
+    min-height: 100vh;
+    padding-block: 2rem 5rem;
+}
+
+.pedido-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.pedido-cabecalho h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+}
+
+.pedido-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--pao);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.pedido-voltar:hover {
+    color: var(--mostarda);
+}
+
+.pedido-layout {
+    display: grid;
+    gap: 2rem;
+}
+
+.pedido-box {
+    padding: 1.5rem;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-grande);
+    background-color: var(--carvao);
+}
+
+.pedido-box h2 {
+    margin-bottom: 1.25rem;
+    font-size: 1.75rem;
+}
+
+.carrinho-vazio {
+    padding-block: 2rem;
+    color: var(--pao);
+    text-align: center;
+}
+
+.carrinho-vazio i {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--mostarda);
+    font-size: 2.5rem;
+}
+
+
+/* Produtos dentro do carrinho */
+
+.carrinho-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--linha);
+}
+
+.carrinho-item:first-child {
+    padding-top: 0;
+}
+
+.carrinho-item:last-child {
+    border-bottom: 0;
+}
+
+.carrinho-item-nome {
+    font-weight: 700;
+}
+
+.carrinho-item-preco {
+    margin-top: 0.2rem;
+    color: var(--mostarda);
+    font-size: 0.9rem;
+}
+
+.carrinho-controles {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carrinho-controles button {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 1px solid var(--linha-forte);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--maionese);
+    cursor: pointer;
+}
+
+.carrinho-controles button:hover {
+    border-color: var(--mostarda);
+    color: var(--mostarda);
+}
+
+.carrinho-quantidade {
+    min-width: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.carrinho-remover {
+    color: var(--ketchup) !important;
+}
+
+
+/* Total */
+
+.carrinho-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--linha-forte);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.carrinho-total strong {
+    color: var(--mostarda);
+    font-size: 1.4rem;
+}
+
+
+/* Formulário */
+
+.pedido-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.pedido-campo {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.pedido-campo label {
+    font-weight: 600;
+}
+
+.pedido-campo input,
+.pedido-campo textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--linha-forte);
+    border-radius: var(--raio);
+    outline: none;
+    background-color: var(--chapa);
+    color: var(--maionese);
+    font: inherit;
+}
+
+.pedido-campo input:focus,
+.pedido-campo textarea:focus {
+    border-color: var(--mostarda);
+}
+
+.pedido-campo textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.pedido-campo small {
+    color: var(--pao);
+}
+
+.btn-finalizar {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.btn-finalizar i {
+    font-size: 1.2rem;
+}
+
+
+/* Celular */
+
+@media (max-width: 899px) {
+    .carrinho-topo span {
+        display: none;
+    }
+
+    .carrinho-topo {
+        padding: 0.6rem 0.75rem;
+    }
+}
+
+
+/* Desktop */
+
+@media (min-width: 900px) {
+    .pedido-pagina {
+        padding-block: 4rem 6rem;
+    }
+
+    .pedido-layout {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .pedido-box {
+        padding: 2rem;
+    }
+}
+
+
+/* ==========================================================================
+   CARRINHO NO CARDÁPIO (botão "+" dos itens e botão do cabeçalho)
+   ========================================================================== */
+
+/* Botão redondo "+" no fim de cada item (criado pelo script.js) */
+.btn-adicionar {
+    align-self: center;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 2px solid var(--mostarda);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--mostarda);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-adicionar:hover {
+    background-color: var(--mostarda);
+    color: var(--chapa);
+}
+
+.btn-adicionar:active {
+    transform: scale(0.9);
+}
+
+/* Fica verde por um instante depois de adicionar */
+.btn-adicionar.adicionado {
+    border-color: var(--verde);
+    background-color: var(--verde);
+    color: var(--chapa);
+}
+
+/* Botão do carrinho no cabeçalho + bolinha com a quantidade */
+.carrinho-topo {
+    position: relative;
+}
+
+.carrinho-contador {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background-color: var(--mostarda);
+    color: var(--chapa);
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.carrinho-contador[hidden] {
+    display: none;
+}

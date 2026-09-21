@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>X Vitória | Xis, dogs e pastéis no Passo das Pedras, Porto Alegre</title>
+    <meta name="description" content="Cardápio e pedidos do X Vitória, no Passo das Pedras, em Porto Alegre. Xis, dogs, pastéis, porções e bebidas. Terça a domingo, das 18:30 às 00:30. Peça pelo WhatsApp.">
+    <meta name="theme-color" content="#1c1814">
+
+    <!-- Aparência quando o link é compartilhado (WhatsApp, Instagram, etc.) -->
+    <meta property="og:type" content="restaurant">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="X Vitória | O melhor xis do Passo das Pedras">
+    <meta property="og:description" content="Xis, dogs, pastéis, porções e bebidas. Terça a domingo, das 18:30 às 00:30. Peça pelo WhatsApp.">
+    <!-- Quando o site estiver no ar, adicione a imagem de compartilhamento com o endereço completo:
+    <meta property="og:image" content="https://SEU-DOMINIO.com.br/xis.jpg"> -->
+
+    <!-- FAVICON (ícone da aba do navegador): quando tiver o logo, tire os comentários da linha abaixo
+    <link rel="icon" href="logo.png"> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Figtree:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Dados estruturados: ajudam o Google a mostrar horário, telefone e endereço nas buscas -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "X Vitória",
+        "description": "Xis, dogs, pastéis, porções e bebidas no Passo das Pedras.",
+        "servesCuisine": ["Xis", "Lanches", "Pastéis", "Porções"],
+        "telephone": "+55 51 99749-7728",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av Vitória, 126 - Passo das Pedras",
+            "addressLocality": "Porto Alegre",
+            "addressRegion": "RS",
+            "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "18:30",
+            "closes": "00:30"
+        }],
+        "sameAs": ["https://www.instagram.com/xvitoriavitoria"]
+    }
+    </script>
+</head>
+<body id="topo">
+
+    <!-- Ícones reutilizáveis (aparecem onde houver <use href="#i-...">) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5A8.5 8.5 0 1 1 21 11.5z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8c-.9-.4-1.7-1.2-2.1-2.1l.8-1-1-2z"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-telefone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+        <symbol id="i-local" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    </svg>
+
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="topo">
+        <div class="container topo-conteudo">
+
+            <a class="marca" href="#topo" aria-label="X Vitória, voltar ao início">
+                <span class="logo-slot"><img src="img/favicon.png" alt="Logo do X Vitória"> </span>
+                <span class="marca-nome">X Vitória</span>
+            </a>
+
+            <nav class="menu-principal" aria-label="Principal">
+                <a href="#cardapio">Cardápio</a>
+                <a href="#bebidas">Bebidas</a>
+                <a href="#localizacao">Onde estamos</a>
+            </nav>
+
+            <div class="topo-acoes">
+                <p class="status" data-status="curto">
+                    <span class="status-ponto" aria-hidden="true"></span>
+                    <span class="status-texto">Terça a domingo</span>
+                </p>
+                <a class="btn btn-contorno btn-pequeno carrinho-topo" href="pedido.html" aria-label="Ver carrinho">
+                    <i class="bi bi-cart3" aria-hidden="true"></i>
+                    <span>Carrinho</span>
+                    <b class="carrinho-contador" data-carrinho-contador hidden>0</b>
+                </a>
+                <a class="btn btn-primario btn-pequeno topo-cta" href="pedido.html" target="_blank" rel="noopener">
+                    <svg class="icone" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                    Finalizar seu pedido aqui
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main id="conteudo">
+
+        <!-- ==================== HERO ==================== -->
+        <section class="hero" aria-labelledby="titulo-hero">
+            <div class="container hero-grade">
+
+                <div class="hero-texto">
+                    <h1 id="titulo-hero">O melhor xis do Passo das Pedras</h1>
+                    <p>O X Vitória é feito com ingredientes frescos e de alta qualidade, garantindo um sabor único e irresistível. Venha experimentar!</p>
+                    <div class="hero-acoes">
+                        <a class="btn btn-primario" href="https://wa.me/5551997497728?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
+                            <svg class="icone" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                            Pedir pelo WhatsApp
+                        </a>
+                        <a class="btn btn-contorno" href="https://www.instagram.com/xvitoriavitoria" target="_blank" rel="noopener">
+                            <svg class="icone" aria-hidden="true"><use href="#i-instagram"/></svg>
+                            Seguir no Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <figure class="hero-foto">
+                    <div class="hero-foto-moldura">
+                        <img src="img/log.pag.jpeg" alt="Xis do X Vitória" fetchpriority="high">
+                    </div>
+                    <a class="selo" href="#bebidas">
+                        <strong>Novidade</strong>
+                        Agora temos bebidas
+                    </a>
+                </figure>
+
+            </div>
+        </section>
+
+        <!-- ==================== INFORMAÇÕES RÁPIDAS ==================== -->
+        <section class="info" aria-label="Horário, pedidos e endereço">
+            <div class="container info-grade">
+
+                <div class="info-item">
+                    <span class="info-icone"><svg class="icone" aria-hidden="true"><use href="#i-relogio"/></svg></span>
+                    <div>
+                        <h2 class="info-titulo">Horário</h2>
+                        <p>Terça a domingo, das 18:30 às 00:30</p>
+                        <p class="status status-inline" data-status="longo">
+                            <span class="status-ponto" aria-hidden="true"></span>
+                            <span class="status-texto">Verificando horário</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icone"><svg class="icone" aria-hidden="true"><use href="#i-telefone"/></svg></span>
+                    <div>
+                        <h2 class="info-titulo">Delivery</h2>
+                        <p>WhatsApp: <a href="https://wa.me/5551997497728" target="_blank" rel="noopener">(51) 99749-7728</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icone"><svg class="icone" aria-hidden="true"><use href="#i-local"/></svg></span>
+                    <div>
+                        <h2 class="info-titulo">Onde estamos</h2>
+                        <p>Av Vitória, 126<br>Passo das Pedras, Porto Alegre</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== CARDÁPIO + BEBIDAS ==================== -->
+        <div class="menu">
+
+            <nav class="cat-nav" aria-label="Categorias do cardápio">
+                <div class="cat-nav-interno">
+                    <ul class="cat-lista">
+                        <li><a href="#xis">Xis</a></li>
+                        <li><a href="#dogs">Dogs</a></li>
+                        <li><a href="#pasteis">Pastéis</a></li>
+                        <li><a href="#torradas">Torradas</a></li>
+                        <li><a href="#porcoes">Porções</a></li>
+                        <li><a href="#bebidas-simples">Bebidas simples</a></li>
+                        <li><a href="#copao">Copão</a></li>
+                        <li><a href="#kits">Kits</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <section class="secao" id="cardapio" aria-labelledby="titulo-cardapio">
+                <div class="container">
+                    <div class="secao-cabecalho">
+                        <h2 id="titulo-cardapio">Cardápio</h2>
+                        <p>Escolha seu lanche e faça o pedido pelo WhatsApp.</p>
+                    </div>
+
+                    <div class="categoria" id="xis">
+                        <div class="categoria-cabecalho">
+                            <h3>Xis</h3>
+                            <p class="categoria-nota">Todos os lanches acompanham alface, tomate, milho, ervilha, ketchup, maionese, mostarda, ovo e queijo.</p>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Xis Tudo</span><span class="item-desc">Coração, bacon, calabresa, carne e frango</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 34,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Xis Stroganoff</span><span class="item-desc">Stroganoff de carne</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 27,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Xis Coração</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 26,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Xis Carne</span><span class="item-desc">Bife de carne</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 21,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Xis Frango</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 22,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">X Vitória</span><span class="item-desc">Bacon, coração e calabresa</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 29,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">X Grenal</span><span class="item-desc">Bacon e calabresa</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 28,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">X Bacon</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 27,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">X 4 Queijos</span><span class="item-desc">Bife, mussarela, catupiry, cheddar e parmesão</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 22,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">X Calabresa</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 23,00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="categoria" id="dogs">
+                        <div class="categoria-cabecalho">
+                            <h3>Dogs</h3>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Dog 1 salsicha</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 13,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Dog 2 salsichas</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 15,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Dog Calabresa</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 17,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Dog Doce</span><span class="item-desc">Chocolate, morango, queijo e leite condensado</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 17,00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="categoria" id="pasteis">
+                        <div class="categoria-cabecalho">
+                            <h3>Pastéis</h3>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel de queijo</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel de frango</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel de carne</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel doce de chocolate</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel de chocolate branco</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel de chocolate preto</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Pastel napolitano</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 8,50</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="categoria" id="torradas">
+                        <div class="categoria-cabecalho">
+                            <h3>Torradas</h3>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Presunto e queijo</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 15,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Carne</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 15,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Frango</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 15,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Calabresa</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 15,00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="categoria" id="porcoes">
+                        <div class="categoria-cabecalho">
+                            <h3>Porções</h3>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Picadão</span><span class="item-desc">Carne, coração, calabresa, batata frita e pão torrado</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 60,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Fritas sem queijo</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 23,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Fritas com queijo</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 27,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Fritas com queijo cheddar e bacon</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 33,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Fritas com queijo e calabresa</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 33,00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="categoria" id="bebidas-simples">
+                        <div class="categoria-cabecalho">
+                            <h3>Bebidas simples</h3>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Refrigerante 2L</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 10,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Coca-Cola 2L</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 13,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Água sem gás</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 10,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Água com gás</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 10,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Cerveja litrão</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 12,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Cerveja lata</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 6,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Refrigerante lata</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 5,00</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="secao secao-bebidas" id="bebidas" aria-labelledby="titulo-bebidas">
+                <div class="container">
+                    <div class="secao-cabecalho">
+                        <h2 id="titulo-bebidas">Cardápio de bebidas</h2>
+                        <p>Whisky, gin, vodka, energéticos e muito gelo. Feche seu copão ou kit direto pelo WhatsApp.</p>
+                    </div>
+
+                    <div class="categoria" id="copao">
+                        <div class="categoria-cabecalho">
+                            <h3>Copão</h3>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Copão de Gin de 10</span><span class="item-desc">500 ml</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 10,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Copão de Gin de 10</span><span class="item-desc">700 ml</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 12,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Copão de White Horse</span><span class="item-desc">500 ml</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 12,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Copão de White Horse</span><span class="item-desc">700 ml</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 15,00</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="categoria" id="kits">
+                        <div class="categoria-cabecalho">
+                            <h3>Kits</h3>
+                            <p class="categoria-nota">Garrafa com energéticos ou refrigerantes Baly. Todo kit acompanha copão e gelo.</p>
+                        </div>
+                        <ul class="lista">
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Gin de 10</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 45,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Orloff</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 60,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Smirnoff</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 65,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Cavalo Branco</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 105,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Absolut</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 105,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Ballantine's</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 110,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Beefeater</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 115,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Red Label</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 115,00</span></li>
+                            <li class="item"><div class="item-info"><span class="item-nome">Kit Jack Daniel's</span></div><span class="item-pontos" aria-hidden="true"></span><span class="item-preco">R$ 160,00</span></li>
+                        </ul>
+                    </div>
+
+                    <p class="aviso-idade">Venda de bebidas alcoólicas proibida para menores de 18 anos. Beba com moderação.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ==================== LOCALIZAÇÃO ==================== -->
+        <section class="local" id="localizacao" aria-labelledby="titulo-local">
+            <div class="container local-grade">
+
+                <div class="local-texto">
+                    <h2 id="titulo-local">Onde estamos</h2>
+                    <address>
+                        Av Vitória, 126<br>
+                        Passo das Pedras, Porto Alegre - RS
+                    </address>
+                    <p>Terça a domingo, das 18:30 às 00:30</p>
+                    <a class="btn btn-contorno" href="https://www.google.com/maps/search/?api=1&amp;query=Av+Vit%C3%B3ria+126+Passo+das+Pedras+Porto+Alegre+RS" target="_blank" rel="noopener">
+                        <svg class="icone" aria-hidden="true"><use href="#i-local"/></svg>
+                        Abrir no Google Maps
+                    </a>
+                </div>
+
+                <div class="mapa">
+                    <iframe
+                        title="Mapa com a localização do X Vitória, na Av Vitória, 126, Passo das Pedras"
+                        src="https://www.google.com/maps?q=Av+Vit%C3%B3ria+126+Passo+das+Pedras+Porto+Alegre+RS&amp;output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="rodape">
+        <div class="container">
+            <div class="rodape-grade">
+
+                <div class="rodape-marca">
+                    <div class="marca">
+                        <!-- Segundo espaço do logo: mesmo procedimento do cabeçalho (troque "LOGO" pelo <img>) -->
+                        <span class="logo-slot logo-slot-grande"><img src="img/favicon.png" alt="Logo X Vitória"></span>
+                        <span class="marca-nome">X Vitória</span>
+                    </div>
+                    <p>O sabor que todo mundo aprova!</p>
+                </div>
+
+                <div>
+                    <h2 class="rodape-titulo">Contato</h2>
+                    <p><a href="https://wa.me/5551997497728" target="_blank" rel="noopener">WhatsApp (51) 99749-7728</a></p>
+                    <p><a href="https://www.instagram.com/xvitoriavitoria" target="_blank" rel="noopener">@xvitoriavitoria</a></p>
+                </div>
+
+                <div>
+                    <h2 class="rodape-titulo">Funcionamento</h2>
+                    <p>Terça a domingo<br>18:30 às 00:30</p>
+                    <p>Av Vitória, 126<br>Passo das Pedras, Porto Alegre</p>
+                </div>
+
+            </div>
+
+            <div class="rodape-fim">
+                <p>© <span data-ano>2026</span> X Vitória. Todos os direitos reservados.</p>
+                <a href="#topo">Voltar ao topo</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Barra de pedido fixa (só aparece no celular) -->
+    <div class="pedido-fixo">
+        <a class="btn btn-primario" href="pedido.html" target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Finalizar seu pedido
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seu pedido | X Vitória</title>
+
+    <meta
+        name="description"
+        content="Finalize seu pedido no X Vitória."
+    >
+
+    <meta name="theme-color" content="#1c1814">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Figtree:wght@400;500;600;700&display=swap"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="pedido-pagina">
+
+        <div class="container">
+
+            <div class="pedido-cabecalho">
+
+                <div>
+                    <a class="pedido-voltar" href="index.html">
+                        <i class="bi bi-arrow-left"></i>
+                        Voltar ao cardápio
+                    </a>
+
+                    <h1>Seu pedido</h1>
+                </div>
+
+                <div class="logo-slot">
+                      <img src="img/favicon.png" alt="Xis do X Vitória" fetchpriority="high">
+                </div>
+
+            </div>
+
+
+            <div class="pedido-layout">
+
+                <!-- ==================== CARRINHO ==================== -->
+
+                <section class="pedido-box" aria-labelledby="titulo-carrinho">
+
+                    <h2 id="titulo-carrinho">
+                        <i class="bi bi-cart3"></i>
+                        Carrinho
+                    </h2>
+
+                    <div id="lista-carrinho">
+                        <!-- Produtos inseridos pelo JavaScript -->
+                    </div>
+
+                    <div class="carrinho-total">
+                        <span>Total</span>
+                        <strong id="total-carrinho">R$ 0,00</strong>
+                    </div>
+
+                </section>
+
+
+                <!-- ==================== DADOS DO PEDIDO ==================== -->
+
+                <section class="pedido-box" aria-labelledby="titulo-dados">
+
+                    <h2 id="titulo-dados">
+                        Seus dados
+                    </h2>
+
+                    <form class="pedido-form" id="form-pedido">
+
+                        <div class="pedido-campo">
+                            <label for="nome">
+                                Nome *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="pedido-campo">
+                            <label for="endereco">
+                                Endereço *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="endereco"
+                                name="endereco"
+                                placeholder="Rua, número, bairro..."
+                                required
+                            >
+                        </div>
+
+
+                        <div class="pedido-campo">
+                            <label for="complemento">
+                                Complemento
+                            </label>
+
+                            <input
+                                type="text"
+                                id="complemento"
+                                name="complemento"
+                                placeholder="Apartamento, casa, referência..."
+                            >
+                        </div>
+
+
+                        <div class="pedido-campo">
+                            <label for="observacao">
+                                Observação
+                            </label>
+
+                            <textarea
+                                id="observacao"
+                                name="observacao"
+                                placeholder="Ex.: tirar cebola, colocar mais molho..."
+                            ></textarea>
+                        </div>
+
+
+                        <button
+                            class="btn btn-primario btn-finalizar"
+                            type="submit"
+                        >
+                            <i class="bi bi-whatsapp"></i>
+                            Enviar pedido pelo WhatsApp
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="pedido.js"></script>
+
+</body>
+
+</html>
