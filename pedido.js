@@ -7,6 +7,11 @@
     var totalElemento = document.getElementById('total-carrinho');
     var formulario = document.getElementById('form-pedido');
 
+    // Forma de pagamento
+    var radiosPagamento = document.querySelectorAll('input[name="pagamento"]');
+    var campoBandeira = document.getElementById('campo-bandeira'); // continua null, e tudo bem
+    var selectBandeira = document.getElementById('bandeira-cartao');
+
 
     function pegarCarrinho() {
         try {
@@ -37,6 +42,23 @@
         return carrinho.reduce(function (total, item) {
             return total + (item.preco * item.quantidade);
         }, 0);
+    }
+
+
+    // Mostra o campo "Bandeira do cartão" só quando "Cartão" estiver marcado
+    function atualizarCampoBandeira() {
+
+        if (!campoBandeira) {
+            return;
+        }
+
+        var selecionado =
+            document.querySelector('input[name="pagamento"]:checked');
+
+        var eCartao =
+            selecionado && selecionado.value === 'Cartão de crédito/débito';
+
+        campoBandeira.hidden = !eCartao;
     }
 
 
@@ -191,6 +213,12 @@
     }
 
 
+    // Alterna a exibição da bandeira sempre que a forma de pagamento muda
+    radiosPagamento.forEach(function (radio) {
+        radio.addEventListener('change', atualizarCampoBandeira);
+    });
+
+
     formulario.addEventListener('submit', function (evento) {
 
         evento.preventDefault();
@@ -215,6 +243,22 @@
 
         var observacao =
             document.getElementById('observacao').value.trim();
+
+        var troco =
+            document.getElementById('troco').value.trim();
+
+        var radioPagamento =
+            document.querySelector('input[name="pagamento"]:checked');
+
+
+        if (!radioPagamento) {
+            alert('Selecione a forma de pagamento.');
+            return;
+        }
+
+        var formaPagamento = radioPagamento.value;
+
+        var bandeira = selectBandeira.value;
 
 
         var total = calcularTotal(carrinho);
@@ -256,6 +300,26 @@
 
 
         mensagem +=
+            '%0A💳 *Forma de pagamento:* ' +
+            formaPagamento;
+
+        if (formaPagamento === 'Cartão de crédito/débito' && bandeira) {
+            mensagem +=
+                ' (' +
+                bandeira +
+                ')';
+        }
+
+        mensagem += '%0A';
+
+        if (formaPagamento === 'Dinheiro' && troco) {
+            mensagem +=
+                '%0A💰 *Troco para:* ' +
+                troco;
+        }
+
+
+        mensagem +=
             '%0A📍 *Endereço:* ' +
             endereco;
 
@@ -288,6 +352,8 @@
 
     });
 
+
+    atualizarCampoBandeira();
 
     mostrarCarrinho();
 
