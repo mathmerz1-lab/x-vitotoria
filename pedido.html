@@ -144,6 +144,59 @@
                         </div>
 
 
+                       <fieldset class="pedido-campo">
+                            <legend>Forma de pagamento *</legend>
+
+                            <div class="pedido-radio">
+                                <input
+                                    type="radio"
+                                    id="dinheiro"
+                                    name="pagamento"
+                                    value="Dinheiro"
+                                    required
+                                >
+                                <label for="dinheiro">Dinheiro</label>
+                                  <input
+                                type="text"
+                                id="troco"
+                                name="troco"
+                                placeholder="Precisa de troco?"
+                            >
+                            </div>
+
+                            <div class="pedido-radio">
+                                <input
+                                    type="radio"
+                                    id="pix"
+                                    name="pagamento"
+                                    value="Pix"
+                                >
+                                <label for="pix">Pix</label>
+                            </div>
+
+                            <div class="pedido-radio">
+                                <input
+                                    type="radio"
+                                    id="cartao"
+                                    name="pagamento"
+                                    value="Cartão de crédito/débito"
+                                >
+                                <label for="cartao">Cartão de crédito/débito</label>
+                            </div>
+
+                            <div class="pedido-campo">
+
+                            <input
+                                type="text"
+                                id="bandeira-cartao"
+                                name="bandeira-cartao"
+                                placeholder="Qual bandeira do cartão?"
+                            >
+
+                        </div>
+                        </fieldset>
+
+
                         <button
                             class="btn btn-primario btn-finalizar"
                             type="submit"
