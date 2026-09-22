@@ -644,6 +644,22 @@ address {
     line-height: 1.5;
 }
 
+/* Subtítulo dentro de uma categoria (ex.: separar "Refrigerantes 2L" de "Refrigerantes lata") */
+.subcategoria-titulo {
+    margin-top: 1.5rem;
+    margin-bottom: 0.25rem;
+    font-family: var(--fonte-texto);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mostarda);
+}
+
+.subcategoria-titulo:first-of-type {
+    margin-top: 0.5rem;
+}
+
 /* Lista de itens com pontilhado ligando o nome ao preço */
 .lista {
     margin: 0;
@@ -1089,7 +1105,8 @@ address {
 }
 
 .pedido-campo input,
-.pedido-campo textarea {
+.pedido-campo textarea,
+.pedido-campo select {
     width: 100%;
     padding: 0.85rem 1rem;
     border: 1px solid var(--linha-forte);
@@ -1101,7 +1118,8 @@ address {
 }
 
 .pedido-campo input:focus,
-.pedido-campo textarea:focus {
+.pedido-campo textarea:focus,
+.pedido-campo select:focus {
     border-color: var(--mostarda);
 }
 
@@ -1214,4 +1232,41 @@ address {
 
 .carrinho-contador[hidden] {
     display: none;
+}
+/* Radio de "Forma de pagamento": desfaz o estilo de caixa de texto que
+   .pedido-campo input aplicaria aos radios, e ajusta fieldset/legend
+   pro visual combinar com o resto do formulário */
+fieldset.pedido-campo {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pedido-campo legend {
+    padding: 0;
+    font-weight: 600;
+}
+
+.pedido-campo input[type="radio"] {
+    width: auto;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    accent-color: var(--mostarda);
+}
+
+.pedido-radio {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.pedido-radio label {
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.pedido-radio input {
+    cursor: pointer;
 }
